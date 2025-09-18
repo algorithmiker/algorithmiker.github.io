@@ -1,0 +1,17 @@
+---
+export interface Props {
+	hover?: boolean;
+  shadow?: boolean;
+}
+
+const { hover = false, shadow = false } = Astro.props;
+let hoverProps = hover ? "hover:bg-stone-100 dark:hover:bg-stone-800" : ""
+let shadowProps = shadow ? "drop-shadow-md shadow-stone-500/25 dark:shadow-stone-400/25" : ""
+---
+<div class={`card backdrop-blur-md rounded-md border border-stone-500 
+  dark:border-stone-400 py-1 px-4
+	bg-white dark:bg-neutral-800 bg-opacity-50 ${hoverProps} ${shadowProps}
+	my-2 text-black dark:text-white `}> 
+<slot />
+
+</div>
