@@ -1,7 +1,40 @@
-<div class="header grid p-4">
-<a href="/"> 
-	<div class="bg-gradient-to-r bg-clip-text text-transparent inline-block
-from-amber-500 to-amber-600 font-black text-4xl">Counting Reals</div>
-</a>
-</div>
-<hr>
+---
+export enum Selected {
+	BlogIndex,
+	About,
+}
+export interface Props {
+	selected: Selected;
+}
+let { selected } = Astro.props;
+function classListFor(selected: boolean): Array<String> {
+	return ["header-page", selected ? "underline" : "no-underline"];
+}
+let blogClassList = classListFor(selected === Selected.BlogIndex);
+let aboutClassList = classListFor(selected === Selected.About);
+---
+
+<header>
+	<a href="/" class="header-logo">COUNTING REALS</a>
+	<nav>
+		<a href="/" class:list={blogClassList}>BLOG</a>
+		<a href="/about" class:list={aboutClassList}>ABOUT</a>
+	</nav>
+</header>
+<hr />
+
+<style is:global>
+	@reference "../styles/global.css";
+	.header-logo {
+		@apply bg-gradient-to-r bg-clip-text text-transparent inline-block from-amber-500 to-amber-600 font-black text-4xl;
+	}
+	header {
+		@apply p-4 flex items-baseline justify-between;
+	}
+	nav {
+		@apply flex gap-4;
+	}
+	.header-page {
+		@apply text-black hover:underline dark:text-white;
+	}
+</style>

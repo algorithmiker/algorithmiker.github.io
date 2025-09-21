@@ -5,7 +5,8 @@ pubDate: 2025-09-17
 ---
 import Latex from '../utils/LaTeX.astro';
 
-Consider the following problem: you are given a dynamically large array of <Latex formula="N"/> floating point numbers, and you are asked to find the index of the smallest one (commonly called <Latex formula="\argmin"/>) as fast as possible. But there's a catch: you know that all values in the list are positive or +0, non-infinity and non-NaN.
+Consider the following problem: you are given a dynamically large array of <Latex formula="N"/> floating point numbers, and you are asked to find the index of the smallest one (commonly called <Latex formula="\argmin"/>) as fast as possible.
+But there's a catch: you know that all values in the list are positive or +0, non-infinity and non-NaN.
 
 ## First solution
 The first solution that comes to mind for this, in Rust, is:

@@ -29,7 +29,8 @@
   }
   p {
     @apply my-2 text-justify;
-    @apply break-words;  
+    @apply break-words;
+		@apply text-base;
   }
 	hr {
 		@apply dark:hidden;
@@ -39,9 +40,10 @@
     @apply text-blue-700 dark:text-blue-300 underline;
   }
 	.astro-code { 
-		@apply rounded-md px-3 py-2 block;
+		@apply px-3 py-2 block;
 	}
 	body {
 		@apply bg-white dark:bg-neutral-900 text-black dark:text-white;	
 	}
+	
 }

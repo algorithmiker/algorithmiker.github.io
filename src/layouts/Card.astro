@@ -1,26 +1,32 @@
 ---
 export interface Props {
-  hover?: boolean;
-  shadow?: boolean;
+	hover?: boolean;
+	shadow?: boolean;
 }
 
 const { hover = false, shadow = false } = Astro.props;
-let hoverProps = hover ? "hover:bg-stone-100 dark:hover:bg-stone-800" : ""
-let shadowProps = shadow ? "drop-shadow-md shadow-stone-500/25 dark:shadow-stone-400/25" : ""
+let cardClasses = [
+	"card",
+	{
+		"card-ext-shadow": shadow,
+		"card-ext-hover": hover,
+	},
+];
 ---
-<div class={`card ${shadow ? "card-ext-shadow" : ""} ${hover ? "card-ext-hover": ""}`}> 
-  <slot />
+
+<div class:list={cardClasses}>
+	<slot />
 </div>
 
 <style is:global>
-@reference "../styles/global.css";
-.card {
-    @apply backdrop-blur-md rounded-md border border-stone-500 dark:border-stone-400 py-1 px-4 bg-white dark:bg-neutral-800 my-2 text-black dark:text-white;
-}
-.card-ext-hover {
-  @apply hover:bg-stone-100 dark:hover:bg-stone-800;
-}
-.card-ext-shadow {
-  @apply drop-shadow-md shadow-stone-500/25 dark:shadow-stone-400/25;
-}
+	@reference "../styles/global.css";
+	.card {
+		@apply backdrop-blur-md border border-stone-800 dark:border-stone-400 py-1 px-4 bg-white dark:bg-neutral-800 my-2 text-black dark:text-white;
+	}
+	.card-ext-hover {
+		@apply hover:bg-stone-100 dark:hover:bg-stone-800;
+	}
+	.card-ext-shadow {
+		@apply drop-shadow-md shadow-stone-500/25 dark:shadow-stone-400/25;
+	}
 </style>
